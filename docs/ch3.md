@@ -1,28 +1,54 @@
 # 第 3 章 类型、值和变量
+
 Computer programs work by manipulating values, such as the number 3.14 or the text “Hello World.” The kinds of values that can be represented and manipulated in a programming language are known as types, and one of the most fundamental characteristics of a programming language is the set of types it supports. When a program needs to retain a value for future use, it assigns the value to (or “stores” the value in) a variable. Variables have names, and they allow use of those names in our programs to refer to values. The way that variables work is another fundamental characteristic of any programming language. This chapter explains types, values, and variables in JavaScript. It begins with an overview and some definitions.
 
+> 计算机程序通过处理数值来工作，比如数字3.14或文本“Hello World”。在一种编程语言中可以表示和操作的值的种类称为类型，而编程语言最基本的特征之一就是它所支持的类型集。当程序需要保留一个值以供将来使用时，它将该值赋给(或将该值“存储”在)一个变量。变量有名称，它们允许在程序中使用这些名称来引用值。变量工作的方式是任何编程语言的另一个基本特征。本章解释了JavaScript中的类型、值和变量。它以概述和一些定义开始。
+
 ## 3.1 Overview and Definitions
+
 JavaScript types can be divided into two categories: primitive types and object types. JavaScript’s primitive types include numbers, strings of text (known as strings), and Boolean truth values (known as booleans). A significant portion of this chapter is dedicated to a detailed explanation of the numeric (§3.2) and string (§3.3) types in JavaScript. Booleans are covered in §3.4.
+
+> JavaScript类型可以分为两类:基本类型和对象类型。JavaScript的基本类型包括数字、文本字符串(称为字符串)和布尔真值(称为布尔值)。这一章的重要部分是专门详细解释JavaScript中的数字(3.2)和字符串(3.3)类型。在§3.4中介绍了布尔值。
 
 The special JavaScript values null and undefined are primitive values, but they are not numbers, strings, or booleans. Each value is typically considered to be the sole member of its own special type. §3.5 has more about null and undefined. ES6 adds a new special-purpose type, known as Symbol, that enables the definition of language extensions without harming backward compatibility. Symbols are covered briefly in §3.6.
 
+> 特殊的JavaScript值null和undefined是基本值，但它们不是数字、字符串或布尔值。每个值通常被认为是它自己特殊类型的唯一成员。§3.5有更多关于null和undefined的内容。ES6添加了一种新的特殊用途类型，称为Symbol，它支持在不损害向后兼容性的情况下定义语言扩展。符号在§3.6中有简要介绍。
+
 Any JavaScript value that is not a number, a string, a boolean, a symbol, null, or undefined is an object. An object (that is, a member of the type object) is a collection of properties where each property has a name and a value (either a primitive value or another object). One very special object, the global object, is covered in §3.7, but more general and more detailed coverage of objects is in Chapter 6.
+
+> 任何不是数字、字符串、布尔值、符号、null或未定义的JavaScript值都是对象。对象(即类型对象的成员)是属性的集合，其中每个属性都有一个名称和一个值(原始值或另一个对象)。一个非常特殊的对象，全局对象，在§3.7中已经介绍过了，但是在第6章中对对象进行了更广泛、更详细的介绍。
 
 An ordinary JavaScript object is an unordered collection of named values. The language also defines a special kind of object, known as an array, that represents an ordered collection of numbered values. The JavaScript language includes special syntax for working with arrays, and arrays have some special behavior that distinguishes them from ordinary objects. Arrays are the subject of Chapter 7.
 
+> 普通的JavaScript对象是命名值的无序集合。该语言还定义了一种特殊类型的对象，称为数组，它表示编号值的有序集合。JavaScript语言包含处理数组的特殊语法，数组有一些特殊的行为将它们与普通对象区分开来。数组是第7章的主题。
+
 In addition to basic objects and arrays, JavaScript defines a number of other useful object types. A Set object represents a set of values. A Map object represents a mapping from keys to values. Various “typed array” types facilitate operations on arrays of bytes and other binary data. The RegExp type represents textual patterns and enables sophisticated matching, searching, and replacing operations on strings. The Date type represents dates and times and supports rudimentary date arithmetic. Error and its subtypes represent errors that can arise when executing JavaScript code. All of these types are covered in Chapter 11.
+
+> 除了基本对象和数组之外，JavaScript还定义了许多其他有用的对象类型。Set对象表示一组值。Map对象表示从键到值的映射。各种“类型化数组”类型促进了对字节数组和其他二进制数据的操作。RegExp类型表示文本模式，支持对字符串进行复杂的匹配、搜索和替换操作。Date类型表示日期和时间，并支持基本的日期运算。Error及其子类型表示在执行JavaScript代码时可能出现的错误。所有这些类型都在第11章中介绍。
 
 JavaScript differs from more static languages in that functions and classes are not just part of the language syntax: they are themselves values that can be manipulated by JavaScript programs. Like any JavaScript value that is not a primitive value, functions and classes are a specialized kind of object. They are covered in detail in Chapters 8 and 9.
 
+> JavaScript与更静态的语言的不同之处在于，函数和类不仅仅是语言语法的一部分:它们本身是可由JavaScript程序操作的值。像任何不是基本值的JavaScript值一样，函数和类是一种特殊的对象。它们将在第8章和第9章中详细介绍。
+
 The JavaScript interpreter performs automatic garbage collection for memory management. This means that a JavaScript programmer generally does not need to worry about destruction or deallocation of objects or other values. When a value is no longer reachable—when a program no longer has any way to refer to it—the interpreter knows it can never be used again and automatically reclaims the memory it was occupying. (JavaScript programmers do sometimes need to take care to ensure that values do not inadvertently remain reachable—and therefore nonreclaimable—longer than necessary.)
 
+> JavaScript解释器为内存管理执行自动垃圾收集。这意味着JavaScript程序员通常不需要担心对象或其他值的销毁或释放。当一个值不再可获得时——当程序不再有方法引用它时——解释器知道它再也不能被使用，并自动收回它所占用的内存。(JavaScript程序员有时确实需要注意确保值不会意外地保持可使用(因此不可收回)时间超过必要。)
+
 JavaScript supports an object-oriented programming style. Loosely, this means that rather than having globally defined functions to operate on values of various types, the types themselves define methods for working with values. To sort the elements of an array a, for example, we don’t pass a to a sort() function. Instead, we invoke the sort() method of a:
+
+> JavaScript支持面向对象的编程风格。松散地说，这意味着不是用全局定义的函数来操作各种类型的值，而是由类型本身定义处理值的方法。例如，要对数组a的元素进行排序，我们不需要将a传递给sort()函数。相反，我们调用sort()方法:
+
 ```js
 a.sort();       // The object-oriented version of sort(a).
 ```
+
 Method definition is covered in Chapter 9. Technically, it is only JavaScript objects that have methods. But numbers, strings, boolean, and symbol values behave as if they have methods. In JavaScript, null and undefined are the only values that methods cannot be invoked on.
 
+> 方法定义将在第9章中介绍。从技术上讲，只有JavaScript对象才有方法。但是数字、字符串、布尔值和符号值的行为就好像它们有方法一样。在JavaScript中，只有null和undefined值不能调用方法。
+
 JavaScript’s object types are mutable and its primitive types are immutable. A value of a mutable type can change: a JavaScript program can change the values of object properties and array elements. Numbers, booleans, symbols, null, and undefined are immutable—it doesn’t even make sense to talk about changing the value of a number, for example. Strings can be thought of as arrays of characters, and you might expect them to be mutable. In JavaScript, however, strings are immutable: you can access the text at any index of a string, but JavaScript provides no way to alter the text of an existing string. The differences between mutable and immutable values are explored further in §3.8.
+
+> JavaScript的对象类型是可变的，它的基本类型是不可变的。可变类型的值可以更改:JavaScript程序可以更改对象属性和数组元素的值。数字、布尔值、符号、null和undefined都是不可更改的——例如，讨论更改某个数字的值甚至都没有意义。字符串可以看作是字符数组，您可能希望它们是可变的。然而，在JavaScript中，字符串是不可变的:您可以在字符串的任何索引处访问文本，但是JavaScript没有提供改变现有字符串文本的方法。可变值和不可变值之间的区别在§3.8中有进一步的探讨。
 
 JavaScript liberally converts values from one type to another. If a program expects a string, for example, and you give it a number, it will automatically convert the number to a string for you. And if you use a non-boolean value where a boolean is expected, JavaScript will convert accordingly. The rules for value conversion are explained in §3.9. JavaScript’s liberal value conversion rules affect its definition of equality, and the == equality operator performs type conversions as described in §3.9.1. (In practice, however, the == equality operator is deprecated in favor of the strict equality operator ===, which does no type conversions. See §4.9.1 for more about both operators.)
 
