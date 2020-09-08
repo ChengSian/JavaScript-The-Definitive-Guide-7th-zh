@@ -1,31 +1,56 @@
 # 第 4 章 表达式和运算符
+
 This chapter documents JavaScript expressions and the operators with which many of those expressions are built. An expression is a phrase of JavaScript that can be evaluated to produce a value. A constant embedded literally in your program is a very simple kind of expression. A variable name is also a simple expression that evaluates to whatever value has been assigned to that variable. Complex expressions are built from simpler expressions. An array access expression, for example, consists of one expression that evaluates to an array followed by an open square bracket, an expression that evaluates to an integer, and a close square bracket. This new, more complex expression evaluates to the value stored at the specified index of the specified array. Similarly, a function invocation expression consists of one expression that evaluates to a function object and zero or more additional expressions that are used as the arguments to the function.
+
+> 本章介绍了JavaScript表达式和用于构建这些表达式的操作符。表达式是JavaScript的一个短语，可以计算它来产生一个值。在程序中嵌入的常量是一种非常简单的表达式。变量名也是一个简单的表达式，计算结果为分配给该变量的任何值。复杂的表达式是由简单的表达式构建的。例如，数组访问表达式由一个计算结果为数组的表达式、一个计算结果为整数的表达式和一个右方括号组成。这个新的更复杂的表达式计算为存储在指定数组的指定索引处的值。类似地，函数调用表达式由计算为函数对象的一个表达式和用作函数参数的零个或多个附加表达式组成。
 
 The most common way to build a complex expression out of simpler expressions is with an operator. An operator combines the values of its operands (usually two of them) in some way and evaluates to a new value. The multiplication operator * is a simple example. The expression x * y evaluates to the product of the values of the expressions x and y. For simplicity, we sometimes say that an operator returns a value rather than “evaluates to” a value.
 
+> 从较简单的表达式构建复杂表达式的最常见方法是使用运算符。运算符以某种方式组合其操作数的值(通常是两个)并计算为一个新值。乘法运算符*是一个简单的示例。表达式x * y的值是表达式x和y的值的乘积。为了简单起见，我们有时说运算符返回一个值，而不是“求值”一个值。
+
 This chapter documents all of JavaScript’s operators, and it also explains expressions (such as array indexing and function invocation) that do not use operators. If you already know another programming language that uses C-style syntax, you’ll find that the syntax of most of JavaScript’s expressions and operators is already familiar to you.
 
+> 这一章记录了所有的JavaScript操作符，也解释了不使用操作符的表达式(比如数组索引和函数调用)。如果您已经知道另一种使用c风格语法的编程语言，那么您会发现JavaScript的大多数表达式和操作符的语法对您来说已经很熟悉了。
+
 ## 4.1 Primary Expressions
+
 The simplest expressions, known as primary expressions, are those that stand alone—they do not include any simpler expressions. Primary expressions in JavaScript are constant or literal values, certain language keywords, and variable references.
 
+> 最简单的表达式被称为基本表达式，是那些独立的表达式——它们不包括任何更简单的表达式。JavaScript中的主表达式是常量或文字值、某些语言关键字和变量引用。
+
 Literals are constant values that are embedded directly in your program. They look like these:
+
+> 文本是直接嵌入到程序中的常数值。它们看起来是这样的:
+
 ```js
 1.23         // A number literal
 "hello"      // A string literal
 /pattern/    // A regular expression literal
 ```
+
 JavaScript syntax for number literals was covered in §3.2. String literals were documented in §3.3. The regular expression literal syntax was introduced in §3.3.5 and will be documented in detail in §11.3.
 
+> 在§3.2中介绍了用于数字文字的JavaScript语法。在§3.3中记录了字符串文字。正则表达式字面语法是在§3.3.5中介绍的，并将在§11.3中详细说明。
+
 Some of JavaScript’s reserved words are primary expressions:
+
+> 一些JavaScript的保留字是主要的表达式:
+
 ```js
 true       // Evalutes to the boolean true value
 false      // Evaluates to the boolean false value
 null       // Evaluates to the null value
 this       // Evaluates to the "current" object
 ```
+
 We learned about true, false, and null in §3.4 and §3.5. Unlike the other keywords, this is not a constant—it evaluates to different values in different places in the program. The this keyword is used in object-oriented programming. Within the body of a method, this evaluates to the object on which the method was invoked. See §4.5, Chapter 8 (especially §8.2.2), and Chapter 9 for more on this.
 
+> 我们在§3.4和§3.5中学习了真、假和空。与其他关键字不同，这不是常量—它在程序的不同位置计算不同的值。关键字this用于面向对象编程。在方法体中，这将计算为调用该方法的对象。请参阅§4.5，第8章(特别是§8.2.2)和第9章来了解更多这方面的内容。
+
 Finally, the third type of primary expression is a reference to a variable, constant, or property of the global object:
+
+> 最后，第三种类型的主表达式是对全局对象的变量、常量或属性的引用:
+
 ```js
 i             // Evaluates to the value of the variable i.
 sum           // Evaluates to the value of the variable sum.
