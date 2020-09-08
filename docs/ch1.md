@@ -47,6 +47,7 @@ This book covers low-level fundamentals first, and then builds on those to more 
 > 这本书首先介绍了底层基础知识，然后在这些基础上构建更高级和更高级别的抽象。这些章节的目的是让读者或多或少地按顺序阅读。但是学习一种新的编程语言从来都不是一个线性的过程，描述一种语言也不是线性的:每一种语言的特性都与其他特性相关，这本书充满了交叉引用——有时向后，有时向前的相关材料。这一介绍性章节对该语言进行了一次快速的介绍，并介绍了一些关键特性，这些特性将使后续章节的深入处理更容易理解。如果你已经是一个实践JavaScript程序员，你可以跳过这一章。(尽管你可能会喜欢阅读本章末尾的示例1-1，然后再继续阅读。)
 
 ## 1.1 Exploring JavaScript
+
 When learning a new programming language, it’s important to try the examples in the book, then modify them and try them again to test your understanding of the language. To do that, you need a JavaScript interpreter.
 
 > 在学习一门新的编程语言时，试一试书中的例子是很重要的，然后修改它们，再试一次来测试你对这门语言的理解。为此，需要一个JavaScript解释器。
@@ -104,7 +105,7 @@ console.log("Hello World!");
 
 and execute the file with node hello.js, you’ll see the message “Hello World!” printed out.
 
-> 并使用节点hello执行文件。js，你会看到消息“Hello World!””打印出来。
+> 并执行 node hello.js 文件。js，你会看到消息“Hello World!”打印出来。
 
 If you want to see that same message printed out in the JavaScript console of a web browser, create a new file named hello.html, and put this text in it:
 
@@ -160,6 +161,8 @@ x = undefined;             // Undefined is another special value like null.
 ```
 
 Two other very important types that JavaScript programs can manipulate are objects and arrays. These are the subjects of Chapters 6 and 7, but they are so important that you’ll see them many times before you reach those chapters:
+
+> JavaScript程序可以操作的另外两种非常重要的类型是对象和数组。这些是第六章和第七章的主题，但它们非常重要，在你读到这些章节之前，你会多次看到它们:
 
 ```js
 // JavaScript's most important datatype is the object.
@@ -222,6 +225,8 @@ The syntax illustrated here for listing array elements within square braces or m
 > 这里演示的在方括号内列出数组元素或在花括号内将对象属性名映射到属性值的语法称为初始化表达式，它只是第4章的主题之一。表达式是JavaScript的一个短语，可以计算它来产生一个值。例如，的使用。和[]引用对象属性或数组元素的值是一个表达式。
 
 One of the most common ways to form expressions in JavaScript is to use operators:
+
+> 在JavaScript中形成表达式最常见的方法之一是使用操作符:
 
 ```js
 // Operators act on values (the operands) to produce a new value.
@@ -394,28 +399,52 @@ This introductory tour of JavaScript’s fundamental syntax and capabilities end
 > 关于JavaScript基本语法和能力的介绍到此结束，但这本书继续以自成体系的章节介绍该语言的其他特性:
 
 Chapter 10, Modules
+
 Shows how JavaScript code in one file or script can use JavaScript functions and classes defined in other files or scripts.
 
+> 演示一个文件或脚本中的JavaScript代码如何使用在其他文件或脚本中定义的JavaScript函数和类。
+
 Chapter 11, The JavaScript Standard Library
+
 Covers the built-in functions and classes that are available to all JavaScript programs. This includes important data stuctures like maps and sets, a regular expression class for textual pattern matching, functions for serializing JavaScript data structures, and much more.
 
+> 介绍所有JavaScript程序可用的内置函数和类。这包括重要的数据结构，如映射和集合、用于文本模式匹配的正则表达式类、用于序列化JavaScript数据结构的函数等等。
+
 Chapter 12, Iterators and Generators
+
 Explains how the for/of loop works and how you can make your own classes iterable with for/of. It also covers generator functions and the yield statement.
 
+> 解释for/of循环是如何工作的，以及如何使用for/of使您自己的类可迭代。它还包括生成器函数和yield语句。
+
 Chapter 13, Asynchronous JavaScript
+
 This chapter is an in-depth exploration of asynchronous programming in JavaScript, covering callbacks and events, Promise-based APIs, and the async and await keywords. Although the core JavaScript language is not asynchronous, asynchronous APIs are the default in both web browsers and Node, and this chapter explains the techniques for working with those APIs.
 
+> 本章对JavaScript中的异步编程进行了深入的探索，涵盖了回调和事件、基于承诺的api以及异步和等待关键字。尽管核心JavaScript语言不是异步的，异步api在web浏览器和节点中都是默认的，本章解释了使用这些api的技术。
+
 Chapter 14, Metaprogramming
+
 Introduces a number of advanced features of JavaScript that may be of interest to programmers writing libraries of code for other JavaScript programmers to use.
 
+> 介绍了JavaScript的许多高级特性，编写代码库供其他JavaScript程序员使用的程序员可能会对这些特性感兴趣。
+
 Chapter 15, JavaScript in Web Browsers
+
 Introduces the web browser host environment, explains how web browsers execute JavaScript code, and covers the most important of the many APIs defined by web browsers. This is by far the longest chapter in the book.
 
+> 介绍web浏览器主机环境，解释web浏览器如何执行JavaScript代码，并涵盖web浏览器定义的许多api中最重要的一个。这是书中最长的一章。
+
 Chapter 16, Server-Side JavaScript with Node
+
 Introduces the Node host environment, covering the fundamental programming model and the data structures and APIs that are most important to understand.
 
+> 介绍节点主机环境，涵盖基本编程模型以及需要理解的最重要的数据结构和api。
+
 Chapter 17, JavaScript Tools and Extensions
+
 Covers tools and language extensions that are worth knowing about because they are widely used and may make you a more productive programmer.
+
+> 涵盖了值得了解的工具和语言扩展，因为它们被广泛使用，可能使您成为更有生产力的程序员。
 
 ## 1.4 Example: Character Frequency Histograms
 
