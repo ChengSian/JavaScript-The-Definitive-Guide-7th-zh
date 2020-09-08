@@ -1,31 +1,59 @@
 # 第 8 章 函数
+
 This chapter covers JavaScript functions. Functions are a fundamental building block for JavaScript programs and a common feature in almost all programming languages. You may already be familiar with the concept of a function under a name such as subroutine or procedure.
+
+> 本章介绍了JavaScript函数。函数是JavaScript程序的基本构建块，也是几乎所有编程语言的共同特性。您可能已经熟悉名称下的函数的概念，如子例程或过程。
 
 A function is a block of JavaScript code that is defined once but may be executed, or invoked, any number of times. JavaScript functions are parameterized: a function definition may include a list of identifiers, known as parameters, that work as local variables for the body of the function. Function invocations provide values, or arguments, for the function’s parameters. Functions often use their argument values to compute a return value that becomes the value of the function-invocation expression. In addition to the arguments, each invocation has another value—the invocation context—that is the value of the this keyword.
 
+> 函数是一个JavaScript代码块，只定义一次，但可以执行或调用任意次数。JavaScript函数是参数化的:一个函数定义可以包括一个标识符列表，称为参数，作为函数体的局部变量。函数调用为函数的参数提供值或参数。函数通常使用它们的参数值来计算一个返回值，该返回值成为函数调用表达式的值。除了参数之外，每次调用都有另一个值——调用上下文——即this关键字的值。
+
 If a function is assigned to a property of an object, it is known as a method of that object. When a function is invoked on or through an object, that object is the invocation context or this value for the function. Functions designed to initialize a newly created object are called constructors. Constructors were described in §6.2 and will be covered again in Chapter 9.
+
+> 如果一个函数被分配给一个对象的属性，它被称为该对象的方法。当在对象上或通过对象调用函数时，该对象就是该函数的调用上下文或此值。为初始化新创建的对象而设计的函数称为构造函数。构造函数在§6.2中有描述，将在第9章中再次介绍。
 
 In JavaScript, functions are objects, and they can be manipulated by programs. JavaScript can assign functions to variables and pass them to other functions, for example. Since functions are objects, you can set properties on them and even invoke methods on them.
 
+> 在JavaScript中，函数是对象，它们可以被程序操作。例如，JavaScript可以将函数赋给变量，并将它们传递给其他函数。由于函数是对象，所以您可以在它们上设置属性，甚至调用它们上的方法。
+
 JavaScript function definitions can be nested within other functions, and they have access to any variables that are in scope where they are defined. This means that JavaScript functions are closures, and it enables important and powerful programming techniques.
 
+> JavaScript函数定义可以嵌套在其他函数中，并且它们可以访问定义它们的范围内的任何变量。这意味着JavaScript函数是闭包，它支持重要而强大的编程技术。
+
 ## 8.1 Defining Functions
+
 The most straightforward way to define a JavaScript function is with the function keyword, which can be used as a declaration or as an expression. ES6 defines an important new way to define functions without the function keyword: “arrow functions” have a particularly compact syntax and are useful when passing one function as an argument to another function. The subsections that follow cover these three ways of defining functions. Note that some details of function definition syntax involving function parameters are deferred to §8.3.
+
+> 定义JavaScript函数最直接的方法是使用function关键字，它可以用作声明或表达式。ES6定义了一种重要的新方法来定义不使用function关键字的函数:“箭头函数”具有特别紧凑的语法，在将一个函数作为参数传递给另一个函数时非常有用。接下来的小节将介绍这三种定义函数的方法。注意，涉及函数参数的函数定义语法的一些细节被推迟到§8.3中。
 
 In object literals and class definitions, there is a convenient shorthand syntax for defining methods. This shorthand syntax was covered in §6.10.5 and is equivalent to using a function definition expression and assigning it to an object property using the basic name:value object literal syntax. In another special case, you can use keywords get and set in object literals to define special property getter and setter methods. This function definition syntax was covered in §6.10.6.
 
+> 在对象文本和类定义中，有一种方便的快捷语法来定义方法。这种简写语法在§6.10.5中有介绍，相当于使用一个函数定义表达式并使用基本名称将其分配给一个对象属性:value object literal语法。在另一种特殊情况下，可以在对象文本中使用关键字get和set来定义特殊的属性getter和setter方法。这个函数定义语法在§6.10.6中介绍过。
+
 Note that functions can also be defined with the Function() constructor, which is the subject of §8.7.7. Also, JavaScript defines some specialized kinds of functions. function* defines generator functions (see Chapter 12) and async function defines asynchronous functions (see Chapter 13).
 
+> 注意，函数也可以用Function()构造函数来定义，这是§8.7.7的主题。此外，JavaScript还定义了一些特殊类型的函数。定义生成器函数(见第12章)和异步函数定义异步函数(见第13章)。
+
 ### 8.1.1 Function Declarations
+
 Function declarations consist of the function keyword, followed by these components:
 
-An identifier that names the function. The name is a required part of function declarations: it is used as the name of a variable, and the newly defined function object is assigned to the variable.
+> 函数声明由Function关键字组成，后面跟着这些组件:
 
-A pair of parentheses around a comma-separated list of zero or more identifiers. These identifiers are the parameter names for the function, and they behave like local variables within the body of the function.
+- An identifier that names the function. The name is a required part of function declarations: it is used as the name of a variable, and the newly defined function object is assigned to the variable.
+- A pair of parentheses around a comma-separated list of zero or more identifiers. These identifiers are the parameter names for the function, and they behave like local variables within the body of the function.
+- A pair of curly braces with zero or more JavaScript statements inside. These statements are the body of the function: they are executed whenever the function is invoked.
 
-A pair of curly braces with zero or more JavaScript statements inside. These statements are the body of the function: they are executed whenever the function is invoked.
+---
+
+> - 为函数命名的标识符。名称是函数声明的必要部分:它用作变量的名称，并将新定义的函数对象分配给该变量。
+> - 围绕以逗号分隔的零个或多个标识符的列表的一对括号。这些标识符是函数的参数名，它们的行为类似于函数体中的局部变量。
+> - 一对大括号，里面有零个或多个JavaScript语句。这些语句是函数的主体:它们在函数被调用时被执行。
 
 Here are some example function declarations:
+
+> 下面是一些函数声明的例子:
+
 ```js
 // Print the name and value of each property of o.  Return undefined.
 function printprops(o) {
